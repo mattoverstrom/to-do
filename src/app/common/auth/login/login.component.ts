@@ -1,20 +1,26 @@
 
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import * as core from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
-@Component({
+@core.Component({
     templateUrl: './login.component.html',
 })
 
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements core.OnInit, core.OnDestroy {
     userName = '';
     password = '';
     adminTavernInput = '';
     selected: any;
     showSignup = false;
-    isAdmin = false;
+    private _isAdmin = false;
+    public get isAdmin() {
+        return this._isAdmin;
+    }
+    public set isAdmin(value) {
+        this._isAdmin = value;
+    }
     Taverns = [{
         Id:1,
         Name:"Matt's Tavern"
@@ -25,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       },
       {
        Id:3,
-        Name:"Hopes Tavern"
+        Name:"My Tavern"
       }];
 
     constructor(private router: Router, private authService: AuthService) { }

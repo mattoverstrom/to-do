@@ -17,13 +17,13 @@ export class AppComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit(): void {
-    this.authService.currentUser
-      .subscribe((currentUser) => {
-        this.loggedIn = this.authService.isAuthenticated();
-        this.isAdmin = this.authService.isAdmin();
-      });
-  }
+  // ngOnInit(): void {
+  //   this.authService.currentUser
+  //     .subscribe(() => {
+  //       this.loggedIn = this.authService.isAuthenticated();
+  //       this.isAdmin = this.authService.isAdmin();
+  //     });
+  // }
 
   logout(): void {
     this.authService.logout();
