@@ -29,6 +29,12 @@ const tokenCookieKey = 'fantasy-taverns-app-token-cookie';
     providedIn: 'root',
 })
 export class AuthService {
+  isAdmin(): boolean {
+    throw new Error("Method not implemented.");
+  }
+    create(user: { First: string; Last: string; Phone: string; Email: string; Password: string; }): any {
+        throw new Error("Method not implemented.");
+    }
     currentUser: BehaviorSubject<ICurrentlyLoggedInUser> = new BehaviorSubject<
         ICurrentlyLoggedInUser
     >(null);
@@ -37,11 +43,15 @@ export class AuthService {
         private http: HttpClient,
         private cookieService: CookieService,
     ) {
-        const token = this.cookieService.get(tokenCookieKey);
+        const token = this.newMethod().cookieService.get(tokenCookieKey);
         if (token) {
             const loggedInUser: ICurrentlyLoggedInUser = JSON.parse(token);
             this.currentUser.next(loggedInUser);
         }
+    }
+
+    private newMethod() {
+        return this;
     }
 
     isAuthenticated(): boolean {

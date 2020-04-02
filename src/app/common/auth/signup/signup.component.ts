@@ -21,6 +21,16 @@ export class SignupComponent {
             Email: this.email,
             Password: this.password,
         };
+        this.newMethod(user);
+    }
+
+ 
+    private newMethod(user: { First: string; Last: string; Phone: string; Email: string; Password: string; }) {
+        this.signup;
+        this.component(user);
+    }
+
+ component(user: { First: string; Last: string; Phone: string; Email: string; Password: string; }) {
         this.authService.create(user).subscribe(() => {
             this.router.navigateByUrl('/login');
         });
